@@ -11,9 +11,8 @@ export default class MovieRepository extends AbstractRepository <MovieModel>  {
       ...payload,
       id: allMovies.length ? allMovies[allMovies.length - 1].id + 1 : 1,
     } as MovieModel;
-    this.addToStore(newItem);
+    this.addToStorage(newItem);
     return newItem;}
     throw new Error("The run time of the movie has to be positive");
 }
-
 }

@@ -4,21 +4,24 @@ import { EntityModel } from "../types/interfaces/EntityModels";
 export abstract class AbstractRepository<T extends EntityModel>
   implements CatalogService<T>
 {
-  private store: T[] = [];
+  private storage: T[] = [];
   protected serviceName: string;
 
   constructor(serviceName: string) {
     this.serviceName = serviceName;
   }
   getAll(): T[] {
-    return this.store;
+    return this.storage;
   }
   getByID(id: number) {
-    return this.store.find((element) => element.id === id);
+    return this.storage.find((element) => element.id === id);
   }
    abstract create(payload: Omit<T, "id">): T;
 
-  protected addToStore(entity: T): void {
-    this.store.push(entity);
+  protected addToStorage(entity: T): void {
+    this.storage.push(entity);
   }
 }
+
+
+//für MovieRepository, SerienRepository und weitere z.B. UserRepository
